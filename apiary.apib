@@ -43,6 +43,7 @@ info.
             "bank_name": "Openbank",
             "bank_id": "2",
             "pdf_url": "http://foo.bar.com",
+            "concept": "Tuition fees", 
             "paid": false
         }
 
@@ -63,6 +64,7 @@ info.
                 "bank_name": "Openbank",
                 "bank_id": "2",
                 "pdf_url": "http://foo.bar.com",
+                "concept": "Tuition fees", 
                 "paid": false
             }
             
@@ -73,10 +75,6 @@ info.
 Used by the Mobile App to get details of a Receipt
 
 + Response 201 (application/json)
-
-    + Headers
-
-            Location: /receipts/2
 
     + Body
 
@@ -89,5 +87,35 @@ Used by the Mobile App to get details of a Receipt
                 "bank_name": "Openbank",
                 "bank_id": "2",
                 "pdf_url": "http://foo.bar.com",
+                "concept": "Tuition fees", 
                 "paid": false
             }
+
+### Update Receipt [PUT]
+
+Mark a receipt as paid, for example
+
++ Request (application/json)
+
+        {
+            "paid": true
+        }
+
++ Response 201 (application/json)
+
+    + Body
+
+            {
+                "id": "2",
+                "entity_name": "Universidad Politecnica de Madrid",
+                "entity_id": "1",
+                "emited_at": "2015-08-05T08:40:51.620Z",
+                "amount": "173.28",
+                "bank_name": "Openbank",
+                "bank_id": "2",
+                "pdf_url": "http://foo.bar.com",
+                "concept": "Tuition fees", 
+                "paid": true
+            }
+
+            
