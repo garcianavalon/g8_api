@@ -3,52 +3,47 @@ HOST: http://polls.apiblueprint.org/
 
 # G8 Openbank IoT Day
 
-Polls is a simple API allowing consumers to view polls and vote in them.
+API for the Node.js backend to implement
 
-## Questions Collection [/questions]
+## Receipts Collection [/receipts]
 
-### List All Questions [GET]
+### List All Receipts [GET]
+
+This endpoint should be used by the Mobile App to get all receipts info
 
 + Response 200 (application/json)
 
         [
             {
-                "question": "Favourite programming language?",
-                "published_at": "2015-08-05T08:40:51.620Z",
-                "choices": [
-                    {
-                        "choice": "Swift",
-                        "votes": 2048
-                    }, {
-                        "choice": "Python",
-                        "votes": 1024
-                    }, {
-                        "choice": "Objective-C",
-                        "votes": 512
-                    }, {
-                        "choice": "Ruby",
-                        "votes": 256
-                    }
-                ]
+                "id": "1",
+                "entity_name": "Universidad Politecnica de Madrid",
+                "entity_id": "3",
+                "emited_at": "2015-08-05T08:40:51.620Z",
+                "amount": "173.28",
+                "bank_name": "Openbank",
+                "bank_id": "2",
+                "pdf_url": "http://foo.bar.com",
+                "paid": false
             }
         ]
 
-### Create a New Question [POST]
+### Create a New Receipt [POST]
 
-You may create your own question using this action. It takes a JSON
-object containing a question and a collection of answers in the
-form of choices.
+Used by the Entities to register new receipts or by the Mobile App when
+using manual input mode. It takes a JSON object containing the receipt
+info.
 
 + Request (application/json)
 
         {
-            "question": "Favourite programming language?",
-            "choices": [
-                "Swift",
-                "Python",
-                "Objective-C",
-                "Ruby"
-            ]
+            "entity_name": "Universidad Politecnica de Madrid",
+            "entity_id": "1",
+            "emited_at": "2015-08-05T08:40:51.620Z",
+            "amount": "173.28",
+            "bank_name": "Openbank",
+            "bank_id": "2",
+            "pdf_url": "http://foo.bar.com",
+            "paid": false
         }
 
 + Response 201 (application/json)
